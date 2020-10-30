@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./elements.css";
+
+:root {
+  --color-green: #52be80;
+  --color-turquoise: #3ce8bc;
+  --color-red: #de534d;
+  --color-light-red: #ed5b5b;
+  --color-purple: #9b59b6;
+  --color-light-purple: #db59f0;
+  --color-background: #e0e0e0;
+  --color-white: #fcfcfc;
+  --color-black: #333;
+  --color-blue: #04049d;
+  --color-dark-blue: #04045e;
+  --color-aqua: #2acdc1;
+  --color-light-gray: #d5d5d5;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  background: white;
+  color: var(--color-black);
+  font-size: 14px;
+}
+
+input, button{
+  font-family: inherit;
+}
+
+svg {
+  outline: none;
+}
+
+* {
+  box-sizing: border-box;
+}
