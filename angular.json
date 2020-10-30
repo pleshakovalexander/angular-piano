@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "music-test"
+    }
+  },
+  "defaultProject": "music-test",
+  "cli": {
+    "analytics": false
+  }
 }
