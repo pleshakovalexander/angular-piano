@@ -8,15 +8,15 @@ import { Signature } from 'src/app/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleButtonComponent {
-  @ViewChild('input') _inputElement: ElementRef<HTMLInputElement>;
+  @Output() readonly valueChanged = new EventEmitter<Signature>();
 
-  @Output() readonly change = new EventEmitter<Signature>()
+  @ViewChild('input') private inputElement: ElementRef<HTMLInputElement>;
 
-  checked: boolean
+  checked: boolean;
   _onChangeEvent(event: Event): void {
     event.stopPropagation();
-    this.checked = this._inputElement.nativeElement.checked;
-    this.change.emit(this.checked ? Signature.Sharp : Signature.Flat);
+    this.checked = this.inputElement.nativeElement.checked;
+    this.valueChanged.emit(this.checked ? Signature.sharp : Signature.flat);
   }
 
   _onInputClicked(event: Event): void {
