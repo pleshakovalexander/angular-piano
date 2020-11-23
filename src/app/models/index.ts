@@ -1,4 +1,4 @@
 export enum Signature {
-  Sharp = 'sharp',
-  Flat = 'flat'
+  sharp = 'sharp',
+  flat = 'flat'
 }
