@@ -7,8 +7,5 @@ import { Component } from '@angular/core';
 })
 export class TestsPageComponent {
 
-  buttonToggled(value: any): void {
-    console.log(value)
-  }
 
 }
