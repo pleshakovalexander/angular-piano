@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PianoKeysComponent } from '../piano-keys.component';
-
-
+import { PianoKeysComponent } from './piano-keys.component';
 
 @NgModule({
   declarations: [PianoKeysComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule]
 })
-export class PianoKeysModule { }
+export class PianoKeysModule {}
