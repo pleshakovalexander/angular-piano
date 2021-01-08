@@ -1,23 +1,26 @@
 <div class="start">
   <h2 class="start__title">Угадайте Ноту</h2>
-  <form class="options">
+  <form class="options"
+        (ngSubmit)="onSubmit()">
     <div class="options__inputs">
       <label class="input-label"
              for="ocatve">Тональность:</label>
       <div class="inline-component">
         <app-toggle-button (change)="buttonToggled($event)"></app-toggle-button>
         <select id="ocatve"
+                [formControl]="selectedOctave"
                 class="start-select">
           <option *ngFor="let o of octaves"
-                  [value]="o.code">{{o.name}}</option>
+                  [ngValue]="o.code">{{o.name}}</option>
         </select>
       </div>
       <label class="input-label"
              for="questionNum">Количество вопросов:</label>
       <select id="questionNum"
+              [formControl]="selectedNumberOfQuestions"
               class="start-select">
         <option *ngFor="let n of questionNumbersList"
-                [value]="n">{{n}}</option>
+                [ngValue]="n">{{n}}</option>
       </select>
 
       <button type="submit"
