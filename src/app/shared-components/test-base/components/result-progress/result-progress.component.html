@@ -1,0 +1,18 @@
+<div class="result-block">
+  <svg width="264"
+       height="264">
+    <circle class="progress-background"
+            r="105"
+            cx="50%"
+            cy="50%" />
+    <circle class="progress"
+            [attr.stroke-dasharray]="strokeDasharray"
+            [attr.stroke-dashoffset]="offset"
+            r="105"
+            cx="50%"
+            cy="50%" />
+  </svg>
+  <div class="result">
+    <ng-content></ng-content>
+  </div>
+</div>

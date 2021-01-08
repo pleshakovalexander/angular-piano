@@ -1,0 +1,42 @@
+.result-block {
+  position: relative;
+  width: 264px;
+  height: 264px;
+}
+
+.progress,
+.progress-background {
+  fill: none;
+  stroke-width: 20px;
+}
+
+.progress-background {
+  stroke: #dbdcde;
+}
+
+.progress {
+  stroke: var(--color-black);
+  stroke-linecap: round;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.8s ease-in-out;
+}
+
+svg {
+  position: absolute;
+}
+
+svg text {
+  font-size: 36pt;
+}
+
+.result {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 36pt;
+  width: inherit;
+  height: inherit;
+}
