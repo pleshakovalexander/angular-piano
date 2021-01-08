@@ -1,1 +1,21 @@
-<p>piano-keys works!</p>
+<div class="piano">
+  <div class="octave-block"
+       *ngFor="let octave of octaves; index">
+    <div class="octave-header">
+      <h4 class="octave-name">{{octave.name}}</h4>
+    </div>
+    <div class="octave">
+      <button type="button"
+              class="key"
+              *ngFor="let note of octave.notes; index as i"
+              [ngClass]="getNoteClass(note.midi, note.cssClassObj)"
+              [disabled]="!note.degree"
+              (click)="handleKeyPressed(note)">
+        <span>
+          <span *ngIf="i === 0">{{note.name}}</span>
+          <span>{{note.degree}}</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
