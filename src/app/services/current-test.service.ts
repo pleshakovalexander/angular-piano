@@ -1,46 +1,47 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { skip } from 'rxjs/operators';
 
-enum CurrentTestEvent {
+export enum CurrentTestEvent {
   Init,
   NextQuestion,
   Finish
+}
+
+interface CurrentTestInfo {
+  octaveName: string;
+  currentQuestion: number;
+  numberOfQuestions: number;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentTestService {
-  private _octaveName: string;
-  private _currentQuestion: number;
-  private _numberOfQuestions: number;
-  private _events = new Subject<CurrentTestEvent>();
+  private readonly _info = new BehaviorSubject<CurrentTestInfo>(null);
+  public info: Observable<CurrentTestInfo> = this._info.pipe(skip(1));
 
-  public events = this._events.asObservable();
-  public get octaveName(): string {
-    return this._octaveName;
-  }
-  public get currentQuestion(): number {
-    return this._currentQuestion;
-  }
-  public get numberOfQuestions(): number {
-    return this._numberOfQuestions;
-  }
+  private readonly _events = new Subject<CurrentTestEvent>();
+  public events: Observable<CurrentTestEvent> = this._events.asObservable();
 
   init(octaveName: string, numberOfQuestions: number): void {
-    this._currentQuestion = 0;
-    this._octaveName = octaveName;
-    this._numberOfQuestions = numberOfQuestions;
+    const i: CurrentTestInfo = {
+      currentQuestion: 0,
+      octaveName: octaveName,
+      numberOfQuestions: numberOfQuestions
+    };
+    this._info.next(i);
     this._events.next(CurrentTestEvent.Init);
   }
 
   nextQuestion(): void {
-    this._currentQuestion++;
+    const i = this._info.getValue();
+    i.currentQuestion++;
+    this._info.next(i);
     this._events.next(CurrentTestEvent.NextQuestion);
   }
 
   finish(): void {
-    this._currentQuestion = this._numberOfQuestions + 1;
     this._events.next(CurrentTestEvent.Finish);
   }
 }
