@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { PianoKeysComponent } from './piano-keys.component';
 
 @NgModule({
+  imports: [CommonModule],
   declarations: [PianoKeysComponent],
-  imports: [CommonModule]
+  exports: [PianoKeysComponent]
 })
 export class PianoKeysModule {}

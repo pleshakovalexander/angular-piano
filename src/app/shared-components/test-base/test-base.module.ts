@@ -5,7 +5,12 @@ import { ResultProgressComponent } from './components/result-progress/result-pro
 import { TestResultsComponent } from './components/test-results/test-results.component';
 
 @NgModule({
-  declarations: [TestBaseComponent, ResultProgressComponent, TestResultsComponent],
-  imports: [CommonModule]
+  imports: [CommonModule],
+  declarations: [
+    TestBaseComponent,
+    ResultProgressComponent,
+    TestResultsComponent
+  ],
+  exports: [TestBaseComponent]
 })
 export class TestBaseModule {}
