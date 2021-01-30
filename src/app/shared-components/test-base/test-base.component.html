@@ -1,1 +1,26 @@
-<p>test-base works!</p>
+<div class="test">
+  <div *ngIf="!testEnded; else testResultTemplate">
+    <div class="test-header">
+      <div class="test-header_content">
+        <button class="test-header_button"
+                (click)="showEndModal()">
+          <img svg-inline
+               src="@/assets/exit.svg"
+               alt="exit" />
+        </button>
+        <div class="test-info">{{ (info$| async).currentQuestion}}/{{(info$| async).numberOfQuestions}}</div>
+        <button class="test-header_button"
+                (click)="next()">
+          <img svg-inline
+               src="@/assets/next.svg"
+               alt="next" />
+        </button>
+      </div>
+    </div>
+    <slot></slot>
+  </div>
+  <ng-template #testResultTemplate>
+    <app-test-results [numberOfQuestions]="(info$ | async).numberOfQuestions"
+                      [correctAnswers]="(info$ | async).numberOfCorrectAnswers"></app-test-results>
+  </ng-template>
+</div>
