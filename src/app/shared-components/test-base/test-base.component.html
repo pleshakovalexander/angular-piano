@@ -17,7 +17,7 @@
         </button>
       </div>
     </div>
-    <slot></slot>
+    <ng-content></ng-content>
   </div>
   <ng-template #testResultTemplate>
     <app-test-results [numberOfQuestions]="(info$ | async).numberOfQuestions"
