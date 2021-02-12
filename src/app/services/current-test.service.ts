@@ -31,7 +31,7 @@ export class CurrentTestService {
   }
 
   init(octaveName: string, numberOfQuestions: number): void {
-    this._isTestEnded = true;
+    this._isTestEnded = false;
     const i: CurrentTestInfo = {
       currentQuestion: 0,
       octaveName: octaveName,
