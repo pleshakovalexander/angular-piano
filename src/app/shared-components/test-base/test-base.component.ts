@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import {
+  CurrentTestEvent,
   CurrentTestInfo,
   CurrentTestService
 } from 'src/app/services/current-test.service';
@@ -11,11 +13,22 @@ import {
   styleUrls: ['./test-base.component.css']
 })
 export class TestBaseComponent implements OnInit {
-  info$: Observable<CurrentTestInfo>;
-  constructor(private currentTestService: CurrentTestService) {}
+  info: CurrentTestInfo;
+
+  constructor(
+    private currentTestService: CurrentTestService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.info$ = this.currentTestService.info$;
+    this.currentTestService.info$.subscribe({
+      next: (i) => (this.info = i)
+    });
+    const octave = this.route.snapshot.queryParamMap.get('octave');
+    const numberOfQuestions = parseInt(
+      this.route.snapshot.queryParamMap.get('questions')
+    );
+    this.currentTestService.init(octave, numberOfQuestions);
   }
 
   next(): void {
