@@ -33,7 +33,7 @@ export class CurrentTestService {
   init(octaveName: string, numberOfQuestions: number): void {
     this._isTestEnded = false;
     const i: CurrentTestInfo = {
-      currentQuestion: 0,
+      currentQuestion: 1,
       octaveName: octaveName,
       numberOfQuestions: numberOfQuestions,
       numberOfCorrectAnswers: 0
@@ -47,6 +47,10 @@ export class CurrentTestService {
     i.currentQuestion++;
     if (correct) {
       i.numberOfCorrectAnswers++;
+    }
+    if (i.currentQuestion > i.numberOfQuestions) {
+      this.finish();
+      return;
     }
     this._info$.next(i);
     this._events$.next(CurrentTestEvent.NextQuestion);
