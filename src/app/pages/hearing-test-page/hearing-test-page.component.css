@@ -1,30 +1,20 @@
-.test {
-  position: fixed;
-  height: 99vh;
-  width: 99vw;
-}
-.test-header {
+.navigation-container {
   display: flex;
   justify-content: center;
 }
-.test-header_content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1000px;
-  padding: 10px 15px 0;
+
+.test-buttons {
+  /* margin-top: 5px; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
 }
-.test-header_button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+@media only screen and (min-width: 600px) {
+  .test-buttons {
+    gap: 60px;
+  }
 }
-.test-header_button > * {
-  fill: var(--color-light-gray);
+.test-buttons > :first-child {
+  grid-column-start: 2;
 }
-.test-info {
-  text-align: center;
-  padding-top: 0.2rem;
-  font-size: 1rem;
-}
+

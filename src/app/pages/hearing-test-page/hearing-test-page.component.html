@@ -1,1 +1,16 @@
-<p>hearing-test-page works!</p>
+<app-test-base>
+  <app-piano-keys></app-piano-keys>
+  <div class="navigation-container">
+    <div class="test-buttons">
+      <button class="button button-square button-play"
+              (click)="playGuessing()"
+              svg-icon-play>
+      </button>
+      <button v-if="noteGuessed"
+              class="button button-square button-next"
+              (click)="next()"
+              svg-icon-next>
+      </button>
+    </div>
+  </div>
+</app-test-base>
