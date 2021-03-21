@@ -3,17 +3,13 @@
     <div class="test-header">
       <div class="test-header_content">
         <button class="test-header_button"
-                (click)="showEndModal()">
-          <img svg-inline
-               src="/assets/exit.svg"
-               alt="exit" />
+                (click)="showEndModal()"
+                svg-icon-exit>
         </button>
         <div class="test-info">{{ info.currentQuestion}}/{{info.numberOfQuestions}}</div>
         <button class="test-header_button"
-                (click)="next()">
-          <img svg-inline
-               src="/assets/next.svg"
-               alt="next" />
+                (click)="next()"
+                svg-icon-next>
         </button>
       </div>
     </div>
