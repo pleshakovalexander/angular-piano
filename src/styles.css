@@ -32,6 +32,14 @@ input, button{
   font-family: inherit;
 }
 
+.button-play svg {
+  fill: var(--color-turquoise);
+}
+
+.button-next svg {
+  fill: var(--color-light-purple);
+}
+
 svg {
   outline: none;
 }
