@@ -1,5 +1,6 @@
 <app-test-base>
-  <app-piano-keys [octaveName]="octaveName"></app-piano-keys>
+  <app-piano-keys [octaveName]="octaveName"
+                  (keyPressed)="pianoKeyPressed($event)"></app-piano-keys>
   <div class="navigation-container">
     <div class="test-buttons">
       <button class="button button-square button-play"
