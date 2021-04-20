@@ -21,7 +21,7 @@ export class PianoKeysComponent {
       this.octaves = [];
     }
   }
-  @Input() markedNotes: Map<number, NoteMark>;
+  @Input() markedNotes: Map<number, NoteMark> = new Map();
 
   @Output() keyPressed = new EventEmitter();
 
