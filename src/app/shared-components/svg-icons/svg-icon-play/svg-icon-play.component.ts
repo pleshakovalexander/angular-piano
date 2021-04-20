@@ -4,10 +4,6 @@ import { Component, OnInit } from '@angular/core';
   selector: '[svg-icon-play]',
   templateUrl: './play.svg'
 })
-export class SvgIconPlayComponent implements OnInit {
+export class SvgIconPlayComponent {
   constructor() {}
-
-  ngOnInit(): void {
-    console.log('svg play init');
-  }
 }
