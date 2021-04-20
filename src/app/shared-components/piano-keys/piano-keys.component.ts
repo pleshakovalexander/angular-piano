@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
+  Note,
   NoteMark,
   OctaveModelHelper,
   OctaveViewModel
@@ -23,9 +24,9 @@ export class PianoKeysComponent {
   }
   @Input() markedNotes: Map<number, NoteMark> = new Map();
 
-  @Output() keyPressed = new EventEmitter();
+  @Output() keyPressed = new EventEmitter<Note>();
 
-  handleKeyPressed(note) {
+  handleKeyPressed(note: Note) {
     this.keyPressed.emit(note);
   }
 
