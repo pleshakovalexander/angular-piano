@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  CurrentTestEvent,
+  CurrentTestService
+} from 'src/app/services/current-test.service';
 import { SamplerService } from 'src/app/services/sampler.service';
 
 @Component({
@@ -7,9 +11,21 @@ import { SamplerService } from 'src/app/services/sampler.service';
   styleUrls: ['./hearing-test-page.component.css']
 })
 export class HearingTestPageComponent implements OnInit {
-  constructor(private samplerService: SamplerService) {}
+  octaveName: string;
+
+  constructor(
+    private samplerService: SamplerService,
+    private currentTestService: CurrentTestService
+  ) {}
 
   ngOnInit(): void {
+    this.currentTestService.info$.subscribe({
+      next: (i) => {
+        if (this.octaveName != i.octaveName) {
+          this.octaveName = i.octaveName;
+        }
+      }
+    });
     this.playGuessing();
   }
 
