@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import {
   Note,
   NoteMark,
@@ -9,7 +15,8 @@ import {
 @Component({
   selector: 'app-piano-keys',
   templateUrl: './piano-keys.component.html',
-  styleUrls: ['./piano-keys.component.css']
+  styleUrls: ['./piano-keys.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PianoKeysComponent {
   private _octaveHelper = new OctaveModelHelper();
@@ -22,20 +29,22 @@ export class PianoKeysComponent {
       this.octaves = [];
     }
   }
-  @Input() markedNotes: Map<number, NoteMark> = new Map();
+  @Input() set markedNotes(marks: Map<number, NoteMark>) {
+    const anyMarks = marks.size > 0;
+    this.octaves.forEach((o) =>
+      o.notes.forEach((n) => {
+        if (anyMarks && marks.has(n.midi)) {
+          n.cssClassObj[marks.get(n.midi)] = true;
+        } else {
+          n.setCSSClassToDefault();
+        }
+      })
+    );
+  }
 
   @Output() keyPressed = new EventEmitter<Note>();
 
   handleKeyPressed(note: Note) {
     this.keyPressed.emit(note);
-  }
-
-  getNoteClass(noteMidi: number, noteClassObj: any): any {
-    if (this.markedNotes.has(noteMidi)) {
-      return Object.assign(noteClassObj, {
-        [this.markedNotes.get(noteMidi)]: true
-      });
-    }
-    return noteClassObj;
   }
 }

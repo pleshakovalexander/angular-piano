@@ -8,7 +8,7 @@
       <button type="button"
               class="key"
               *ngFor="let note of octave.notes; index as i"
-              [ngClass]="getNoteClass(note.midi, note.cssClassObj)"
+              [ngClass]="note.cssClassObj"
               [disabled]="!note.degree"
               (click)="handleKeyPressed(note)">
         <span>
