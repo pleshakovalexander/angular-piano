@@ -20,9 +20,7 @@
   padding: 0;
   cursor: pointer;
 }
-.test-header_button > * {
-  fill: var(--color-light-gray);
-}
+
 .test-info {
   text-align: center;
   padding-top: 0.2rem;

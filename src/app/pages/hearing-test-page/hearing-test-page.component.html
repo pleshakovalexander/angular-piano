@@ -1,4 +1,4 @@
-<app-test-base>
+<app-test-base (next)="next()">
   <app-piano-keys [octaveName]="octaveName"
                   [markedNotes]="markedNotes"
                   (keyPressed)="pianoKeyPressed($event)"></app-piano-keys>

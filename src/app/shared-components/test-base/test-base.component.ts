@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import {
-  CurrentTestEvent,
   CurrentTestInfo,
   CurrentTestService
 } from 'src/app/services/current-test.service';
@@ -14,6 +12,8 @@ import {
 })
 export class TestBaseComponent implements OnInit {
   info: CurrentTestInfo;
+
+  @Output('next') nextEventEmitter = new EventEmitter();
 
   constructor(
     private currentTestService: CurrentTestService,
@@ -32,7 +32,7 @@ export class TestBaseComponent implements OnInit {
   }
 
   next(): void {
-    this.currentTestService.nextQuestion(false);
+    this.nextEventEmitter.emit();
   }
 
   showEndModal(): void {}
