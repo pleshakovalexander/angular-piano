@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { toMidi } from '@tonaljs/midi';
 import { CurrentTestService } from 'src/app/services/current-test.service';
 import { SamplerService } from 'src/app/services/sampler.service';
+import { CloseStatus } from 'src/app/shared-components/test-modal/service/test-modal.model';
+import { TestModalService } from 'src/app/shared-components/test-modal/service/test-modal.service';
 import { Octave } from 'src/app/utils/octave';
 import { Note, NoteMark } from 'src/app/utils/piano';
 
@@ -20,7 +22,8 @@ export class HearingTestPageComponent implements OnInit {
 
   constructor(
     private samplerService: SamplerService,
-    private currentTestService: CurrentTestService
+    private currentTestService: CurrentTestService,
+    private testModalService: TestModalService
   ) {}
 
   ngOnInit(): void {
@@ -66,6 +69,20 @@ export class HearingTestPageComponent implements OnInit {
       this.guessingNote = this.octaveHelper.randomNote();
       this.currentTestService.nextQuestion(this.guessedCorrect);
       this.markedNotes = new Map();
+    } else {
+      this.testModalService.show({
+        text: 'Пропустить ноту?',
+        okButtonText: 'пропустить',
+        cancelButtonString: 'угадывать',
+        onClose: (status) => {
+          if (status == CloseStatus.Ok) {
+            this.noteGuessed = false;
+            this.guessingNote = this.octaveHelper.randomNote();
+            this.currentTestService.nextQuestion(false);
+            this.markedNotes = new Map();
+          }
+        }
+      });
     }
   }
 }

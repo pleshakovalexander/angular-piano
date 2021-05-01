@@ -4,6 +4,8 @@ import {
   CurrentTestInfo,
   CurrentTestService
 } from 'src/app/services/current-test.service';
+import { CloseStatus } from '../test-modal/service/test-modal.model';
+import { TestModalService } from '../test-modal/service/test-modal.service';
 
 @Component({
   selector: 'app-test-base',
@@ -17,7 +19,8 @@ export class TestBaseComponent implements OnInit {
 
   constructor(
     private currentTestService: CurrentTestService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private testModalService: TestModalService
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +38,18 @@ export class TestBaseComponent implements OnInit {
     this.nextEventEmitter.emit();
   }
 
-  showEndModal(): void {}
+  showEndModal(): void {
+    this.testModalService.show({
+      text: 'Закончить тест?',
+      okButtonText: 'закончить',
+      cancelButtonString: 'угадывать',
+      onClose: (status) => {
+        if (status == CloseStatus.Ok) {
+          this.currentTestService.finish();
+        }
+      }
+    });
+  }
 
   get testEnded(): boolean {
     return this.currentTestService.isTestEnded;

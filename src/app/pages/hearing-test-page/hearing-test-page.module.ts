@@ -5,10 +5,17 @@ import { TestBaseModule } from 'src/app/shared-components/test-base/test-base.mo
 import { PianoKeysModule } from 'src/app/shared-components/piano-keys/piano-keys.module';
 import { SamplerService } from 'src/app/services/sampler.service';
 import { SvgIconsModule } from 'src/app/shared-components/svg-icons/svg-icons.module';
+import { TestModalModule } from 'src/app/shared-components/test-modal/test-modal.module';
 
 @NgModule({
   declarations: [HearingTestPageComponent],
-  imports: [CommonModule, TestBaseModule, PianoKeysModule, SvgIconsModule],
+  imports: [
+    CommonModule,
+    TestBaseModule,
+    PianoKeysModule,
+    SvgIconsModule,
+    TestModalModule
+  ],
   providers: [
     SamplerService,
     {
