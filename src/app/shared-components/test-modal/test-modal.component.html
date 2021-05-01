@@ -1,0 +1,10 @@
+<dialog (close)="handleClose($event)"
+        #myDialog>
+  <div class="modal-content">
+    <h3>{{text}}</h3>
+  </div>
+  <div class="modal-buttons">
+    <button (click)="okClicked()">{{okButtonText}}</button>
+    <button (click)="cancelClicked()">{{cancelButtonText}}</button>
+  </div>
+</dialog>
