@@ -1,13 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 
 @Component({
   selector: 'app-test-results',
   templateUrl: './test-results.component.html',
-  styleUrls: ['./test-results.component.css']
+  styleUrls: ['./test-results.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TestResultsComponent implements OnInit {
   @Input() numberOfQuestions: number;
   @Input() correctAnswers: number;
+  @Output() restartTest = new EventEmitter();
   percentage: number;
   headerText: string;
 
@@ -28,5 +37,9 @@ export class TestResultsComponent implements OnInit {
     } else {
       this.headerText = 'Отдохни 😋';
     }
+  }
+
+  restart(): void {
+    this.restartTest.emit();
   }
 }
