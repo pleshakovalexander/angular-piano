@@ -17,6 +17,7 @@
   </div>
   <ng-template #testResultTemplate>
     <app-test-results [numberOfQuestions]="info.numberOfQuestions"
-                      [correctAnswers]="info.numberOfCorrectAnswers"></app-test-results>
+                      [correctAnswers]="info.numberOfCorrectAnswers"
+                      (restartTest)="restart()"></app-test-results>
   </ng-template>
 </div>

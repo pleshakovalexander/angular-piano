@@ -23,19 +23,26 @@ export class TestBaseComponent implements OnInit {
     private testModalService: TestModalService
   ) {}
 
+  private octave: string;
+  private numberOfQuestions: number;
+
   ngOnInit(): void {
     this.currentTestService.info$.subscribe({
       next: (i) => (this.info = i)
     });
-    const octave = this.route.snapshot.queryParamMap.get('octave');
-    const numberOfQuestions = parseInt(
+    this.octave = this.route.snapshot.queryParamMap.get('octave');
+    this.numberOfQuestions = parseInt(
       this.route.snapshot.queryParamMap.get('questions')
     );
-    this.currentTestService.init(octave, numberOfQuestions);
+    this.currentTestService.init(this.octave, this.numberOfQuestions);
   }
 
   next(): void {
     this.nextEventEmitter.emit();
+  }
+
+  restart() {
+    this.currentTestService.init(this.octave, this.numberOfQuestions);
   }
 
   showEndModal(): void {
