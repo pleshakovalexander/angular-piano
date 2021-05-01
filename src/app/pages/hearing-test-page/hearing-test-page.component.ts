@@ -69,6 +69,7 @@ export class HearingTestPageComponent implements OnInit {
       this.guessingNote = this.octaveHelper.randomNote();
       this.currentTestService.nextQuestion(this.guessedCorrect);
       this.markedNotes = new Map();
+      this.playGuessing();
     } else {
       this.testModalService.show({
         text: 'Пропустить ноту?',
@@ -80,6 +81,7 @@ export class HearingTestPageComponent implements OnInit {
             this.guessingNote = this.octaveHelper.randomNote();
             this.currentTestService.nextQuestion(false);
             this.markedNotes = new Map();
+            this.playGuessing();
           }
         }
       });
