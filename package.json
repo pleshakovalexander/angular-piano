@@ -21,6 +21,7 @@
     "@angular/router": "~11.0.0",
     "@tonaljs/midi": "^4.5.1",
     "@tonaljs/scale": "^4.6.0",
+    "dialog-polyfill": "^0.5.6",
     "rxjs": "~6.6.0",
     "tone": "^14.7.77",
     "tslib": "^2.0.0",
