@@ -65,26 +65,27 @@ export class HearingTestPageComponent implements OnInit {
 
   next(): void {
     if (this.noteGuessed) {
-      this.noteGuessed = false;
-      this.guessingNote = this.octaveHelper.randomNote();
-      this.currentTestService.nextQuestion(this.guessedCorrect);
-      this.markedNotes = new Map();
-      this.playGuessing();
-    } else {
-      this.testModalService.show({
-        text: 'Пропустить ноту?',
-        okButtonText: 'пропустить',
-        cancelButtonString: 'угадывать',
-        onClose: (status) => {
-          if (status == CloseStatus.Ok) {
-            this.noteGuessed = false;
-            this.guessingNote = this.octaveHelper.randomNote();
-            this.currentTestService.nextQuestion(false);
-            this.markedNotes = new Map();
-            this.playGuessing();
-          }
-        }
-      });
+      this.prepareNextQuestion(this.guessedCorrect);
+      return;
     }
+    this.guessedCorrect = false;
+    this.testModalService.show({
+      text: 'Пропустить ноту?',
+      okButtonText: 'пропустить',
+      cancelButtonString: 'угадывать',
+      onClose: (status) => {
+        if (status == CloseStatus.Ok) {
+          this.prepareNextQuestion(this.guessedCorrect);
+        }
+      }
+    });
+  }
+
+  private prepareNextQuestion(guessedCorrect): void {
+    this.noteGuessed = false;
+    this.guessingNote = this.octaveHelper.randomNote();
+    this.currentTestService.nextQuestion(guessedCorrect);
+    this.markedNotes = new Map();
+    this.playGuessing();
   }
 }
