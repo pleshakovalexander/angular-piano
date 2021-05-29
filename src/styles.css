@@ -1,4 +1,4 @@
-@import "./elements.css";
+@import './elements.css';
 
 :root {
   --color-green: #52be80;
@@ -13,7 +13,13 @@
   --color-blue: #04049d;
   --color-dark-blue: #04045e;
   --color-aqua: #2acdc1;
+  --color-dark-gray: #757575;
+  --color-gray: #c4c4c4;
   --color-light-gray: #d5d5d5;
+}
+
+html {
+  font-size: 16px;
 }
 
 html,
@@ -22,26 +28,34 @@ body {
 }
 
 body {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
   background: white;
   color: var(--color-black);
-  font-size: 14px;
 }
 
-input, button{
+input,
+button {
   font-family: inherit;
 }
 
-.button-play svg {
-  fill: var(--color-turquoise);
-}
-
-.button-next svg {
-  fill: var(--color-light-purple);
+.svg-dark-gray svg {
+  fill: var(--color-dark-gray);
 }
 
 svg {
   outline: none;
+}
+
+.border-none {
+  border: none;
+}
+
+.border-gray {
+  border-color: var(--color-gray);
+}
+
+.text-lg {
+  font-size: 1.5rem;
 }
 
 * {

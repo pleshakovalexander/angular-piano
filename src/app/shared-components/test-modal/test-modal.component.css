@@ -12,71 +12,26 @@
 /*modal*/
 dialog {
   background: white;
-  border: 3px solid var(--color-aqua);
+  border: 3px solid var(--color-gray);
   padding: 15px;
 }
 
-dialog[open] {
-  display: flex;
-  flex-direction: column;
-}
-
 .modal-content {
-  color: black;
   text-align: center;
-  font-size: 30px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
-h4 {
-  margin: 0;
+h3 {
+  font-size: 2rem;
 }
 
 .modal-buttons {
   display: flex;
   justify-content: space-between;
 }
-/*modal*/
 
-/*button*/
-button {
-  align-self: unset;
-  border: 2px solid var(--color-aqua);
+.modal-buttons .button {
   width: 135px;
   height: 50px;
-  background: transparent;
-  cursor: pointer;
-  text-transform: capitalize;
-  transition: border-color 0.2s ease-in;
-  outline: none;
-  font-size: 18px;
-  font-weight: 500;
+  padding: 0;
 }
-
-.button_active {
-  background: var(--color-aqua);
-}
-
-button:hover,
-button:focus,
-button:active {
-  border-color: var(--color-blue);
-}
-
-/*button*/
-
-.modal-background {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.29);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/*modal*/

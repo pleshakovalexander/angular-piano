@@ -31,22 +31,3 @@
   align-self: flex-start;
   margin: 20px 0 5px;
 }
-
-.start-select {
-  border: 2px solid var(--color-aqua);
-  color: var(--color-black);
-  background: var(--color-white);
-  width: 250px;
-  height: 40px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.inline-component {
-  display: flex;
-}
-
-.inline-component .start-select {
-  border-left: none;
-  width: 170px;
-}
