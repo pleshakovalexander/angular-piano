@@ -4,12 +4,12 @@
                   (keyPressed)="pianoKeyPressed($event)"></app-piano-keys>
   <div class="navigation-container">
     <div class="test-buttons">
-      <button class="button button-square button-play"
+      <button class="button button-square border-none svg-dark-gray"
               (click)="playGuessing()"
               svg-icon-play>
       </button>
-      <button v-if="noteGuessed"
-              class="button button-square button-next"
+      <button *ngIf="noteGuessed"
+              class="button button-square border-none svg-dark-gray"
               (click)="next()"
               svg-icon-next>
       </button>

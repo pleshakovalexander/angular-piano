@@ -4,7 +4,10 @@
     <h3>{{text}}</h3>
   </div>
   <div class="modal-buttons">
-    <button (click)="okClicked()">{{okButtonText}}</button>
-    <button (click)="cancelClicked()">{{cancelButtonText}}</button>
+    <button class="button border-gray"
+            (click)="okClicked()">{{okButtonText}}</button>
+    <button class="button"
+            autofocus
+            (click)="cancelClicked()">{{cancelButtonText}}</button>
   </div>
 </dialog>

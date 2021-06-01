@@ -23,10 +23,10 @@
 
 .slider:after {
   position: absolute;
-  content: "";
+  content: '';
   height: 40px;
   width: 40px;
-  background-color: var(--color-aqua);
+  background-color: var(--color-gray);
   transition: transform 0.4s;
 }
 
@@ -43,7 +43,7 @@ input:checked + .slider:after {
   font-size: 30px;
   color: var(--color-black);
   user-select: none;
-  border: 2px solid var(--color-aqua);
+  border: 2px solid var(--color-black);
 }
 
 .icon-left {
@@ -52,6 +52,10 @@ input:checked + .slider:after {
   right: 0;
   bottom: 0;
   border-right: none;
+}
+
+.icon-right {
+  border-left: none;
 }
 
 .icon-right {
