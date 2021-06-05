@@ -5,8 +5,16 @@ import { TestsPageComponent } from './pages/tests-page/tests-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/tests', pathMatch: 'full' },
-  { path: 'tests', component: TestsPageComponent },
-  { path: 'hearing-test', component: HearingTestPageComponent }
+  {
+    path: 'tests',
+    component: TestsPageComponent,
+    data: { title: 'Настрой слух' }
+  },
+  {
+    path: 'hearing-test',
+    component: HearingTestPageComponent,
+    data: { title: 'Угадай Ноту' }
+  }
 ];
 
 @NgModule({
