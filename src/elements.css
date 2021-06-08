@@ -14,7 +14,8 @@
   color: var(--color-black);
   font-size: 1rem;
   border: 2px solid var(--color-black);
-  padding: 20px 60px;
+  min-width: 150px;
+  min-height: 50px;
   text-transform: uppercase;
   cursor: pointer;
   background: white;
@@ -27,7 +28,8 @@
 }
 
 .button-big {
-  padding: 20px 60px;
+  min-width: 200px;
+  min-height: 70px;
   font-size: 1.5rem;
 }
 /* #endregion */
