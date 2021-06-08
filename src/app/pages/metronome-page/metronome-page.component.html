@@ -1,0 +1,15 @@
+<input type="number"
+       min="40"
+       max="250"
+       [formControl]="bpm"
+       [value]="bpm.value"
+       (change)="bpmChanged()">
+<input type="range"
+       min="40"
+       max="250"
+       [formControl]="bpm"
+       [value]="bpm.value"
+       (change)="bpmChanged()">
+
+<button type="button"
+        (click)="play()">{{buttonText}}</button>
