@@ -1,15 +1,20 @@
-<input type="number"
-       min="40"
-       max="250"
-       [formControl]="bpm"
-       [value]="bpm.value"
-       (change)="bpmChanged()">
-<input type="range"
-       min="40"
-       max="250"
-       [formControl]="bpm"
-       [value]="bpm.value"
-       (change)="bpmChanged()">
+<div class="container">
+  <input class="text-input-bpm"
+         type="number"
+         min="40"
+         max="250"
+         [formControl]="bpm"
+         [value]="bpm.value"
+         (change)="bpmChanged()">
+  <input type="range"
+         class="bpm-range"
+         min="40"
+         max="250"
+         [formControl]="bpm"
+         [value]="bpm.value"
+         (change)="bpmChanged()">
 
-<button type="button"
-        (click)="play()">{{buttonText}}</button>
+  <button type="button"
+          class="button"
+          (click)="play()">{{buttonText}}</button>
+</div>
