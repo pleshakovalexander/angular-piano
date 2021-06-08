@@ -1,6 +1,7 @@
 <div class="container">
-  <input class="text-input-bpm"
-         type="number"
+  <input type="number"
+         #bpmNumberInput
+         class="text-input-bpm"
          min="40"
          max="250"
          [formControl]="bpm"

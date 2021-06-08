@@ -1,7 +1,13 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { interval, Subscription } from 'rxjs';
-import { startWith } from 'rxjs/operators';
+import { fromEvent, interval, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
 import { MonoSynth } from 'tone';
 
 @Component({
@@ -9,24 +15,44 @@ import { MonoSynth } from 'tone';
   templateUrl: './metronome-page.component.html',
   styleUrls: ['./metronome-page.component.css']
 })
-export class MetronomePageComponent {
+export class MetronomePageComponent implements AfterViewInit, OnDestroy {
   bpm = new FormControl(120);
+
+  @ViewChild('bpmNumberInput')
+  private bpmNumberInput: ElementRef<HTMLInputElement>;
 
   private synth: MonoSynth;
 
   private intervalSubscription = new Subscription();
+
+  private bpmNumberInputChangedSubscription = new Subscription();
+
+  constructor() {
+    this.synth = this.getSynth().toDestination();
+    //Если подписка закрыта значит метроном не играет
+    this.intervalSubscription.unsubscribe();
+  }
+  ngAfterViewInit(): void {
+    this.bpmNumberInputChangedSubscription = fromEvent(
+      this.bpmNumberInput.nativeElement,
+      'input'
+    )
+      .pipe(distinctUntilChanged(), debounceTime(700))
+      .subscribe({
+        next: () => this.bpmChanged()
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.intervalSubscription.unsubscribe();
+    this.bpmNumberInputChangedSubscription.unsubscribe();
+  }
 
   bpmChanged(): void {
     if (false == this.intervalSubscription.closed) {
       this.intervalSubscription.unsubscribe();
       this.intervalSubscription = this.startMetronomeInterval(this.bpm.value);
     }
-  }
-
-  constructor() {
-    this.synth = this.getSynth().toDestination();
-    //Если подписка закрыта значит метроном не играет
-    this.intervalSubscription.unsubscribe();
   }
 
   play(): void {
