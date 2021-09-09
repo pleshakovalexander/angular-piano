@@ -45,10 +45,6 @@
   cursor: pointer;
 }
 
-.test-header_button svg {
-  fill: var(--color-light-gray);
-}
-
 .button-square svg {
   height: 2.2rem;
   width: 2.2rem;
