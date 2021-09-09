@@ -1,3 +1,4 @@
+@import './assets/fonts/index.css';
 @import './elements.css';
 
 :root {
@@ -36,6 +37,22 @@ body {
 input,
 button {
   font-family: inherit;
+}
+
+.color-gray-dark {
+  color: var(--color-dark-gray);
+}
+
+.color-gray-light {
+  color: var(--color-light-gray);
+}
+
+.icon-lg {
+  font-size: 3.5rem;
+}
+
+.icon-md {
+  font-size: 2rem;
 }
 
 .svg-dark-gray svg {

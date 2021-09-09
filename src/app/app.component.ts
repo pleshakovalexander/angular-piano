@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'music-test';
+  constructor(titleService: Title, router: Router) {
+    router.events.pipe(filter((e) => e instanceof NavigationEnd)).subscribe({
+      next: () =>
+        titleService.setTitle(
+          router.routerState.snapshot.root.firstChild.data.title
+        )
+    });
+  }
 }
