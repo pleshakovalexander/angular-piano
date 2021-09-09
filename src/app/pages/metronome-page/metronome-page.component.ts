@@ -64,7 +64,7 @@ export class MetronomePageComponent implements AfterViewInit, OnDestroy {
   }
 
   get buttonText(): string {
-    return this.intervalSubscription.closed ? 'play' : 'stop';
+    return this.intervalSubscription.closed ? 'воспроизвести' : 'пауза';
   }
 
   private startMetronomeInterval(bpm: number): Subscription {
