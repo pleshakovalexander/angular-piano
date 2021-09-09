@@ -3,13 +3,12 @@
     <div class="test-header">
       <div class="test-header_content">
         <button class="test-header_button"
-                (click)="showEndModal()"
-                svg-icon-exit>
+                (click)="showEndModal()"><span class="tu-icon icon-md color-gray-light">закрыть</span>
         </button>
         <div class="test-info">{{ info.currentQuestion}}/{{info.numberOfQuestions}}</div>
         <button class="test-header_button"
-                (click)="next()"
-                svg-icon-next>
+                (click)="next()">
+          <span class="tu-icon icon-md color-gray-light">далее</span>
         </button>
       </div>
     </div>
