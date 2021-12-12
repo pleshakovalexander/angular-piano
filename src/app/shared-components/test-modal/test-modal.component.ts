@@ -11,7 +11,8 @@ import { TestModalService } from './service/test-modal.service';
 export class TestModalComponent implements OnInit {
   @ViewChild('myDialog', { static: true })
   private dialogElement: ElementRef;
-  private nativeDialogElement: HTMLDialogElement;
+  //TODO: replace with propper interface, HTMLDialogElement is depricated
+  private nativeDialogElement: any;//HTMLDialogElement;
 
   text: string;
   okButtonText: string;
