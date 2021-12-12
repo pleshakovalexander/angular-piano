@@ -44,7 +44,7 @@ export class TestModalComponent implements OnInit {
   }
 
   handleClose(e: Event): void {
-    const status = (e.target as HTMLDialogElement).returnValue as CloseStatus;
+    const status = (e.target as any).returnValue as CloseStatus;
     this.onClose(status);
   }
 }
