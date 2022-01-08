@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/dialog-polyfill/dialog-polyfill.css",
               "src/styles.css"
             ],
             "scripts": [],
