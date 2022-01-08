@@ -1,8 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Sampler as ToneSampler } from 'tone';
 
 @Injectable()
 export class SamplerService {
+
+  constructor(private ngZone: NgZone){}
+
   private sampler: ToneSampler;
 
   init(): Promise<any> {
@@ -24,14 +27,18 @@ export class SamplerService {
   }
 
   play(note: string): void {
-    this.sampler.releaseAll();
-    this.sampler.triggerAttack(note);
+    this.ngZone.runOutsideAngular(()=> {
+      this.sampler.releaseAll();
+      this.sampler.triggerAttack(note);
+    })
   }
   playSequence(notes: string[]): void {
-    notes.forEach((n, i) => {
-      setTimeout(() => {
-        this.play(n);
-      }, i * 650);
-    });
+    this.ngZone.runOutsideAngular(() => {
+      notes.forEach((n, i) => {
+        setTimeout(() => {
+          this.play(n);
+        }, i * 650);
+      });
+    })
   }
 }
