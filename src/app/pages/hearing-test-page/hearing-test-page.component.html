@@ -1,19 +1,20 @@
 <app-test-base (next)="next()">
   <app-piano-keys [octaveName]="octaveName"
-                  [markedNotes]="markedNotes"
-                  (keyPressed)="pianoKeyPressed($event)"></app-piano-keys>
+    [markedNotes]="markedNotes"
+  (keyPressed)="pianoKeyPressed($event)"></app-piano-keys>
   <div class="navigation-container">
     <div class="test-buttons">
       <button class="button button-square border-none "
-              (click)="playGuessing()">
+        (click)="playGuessing()">
         <span class="tu-icon icon-lg color-gray-dark">воспроизвести</span>
       </button>
-      <button *ngIf="noteGuessed"
-              class="button button-square border-none"
-              (click)="next()">
-        <span class="tu-icon icon-lg color-gray-dark">далее</span>
-
-      </button>
+      @if (noteGuessed) {
+        <button
+          class="button button-square border-none"
+          (click)="next()">
+          <span class="tu-icon icon-lg color-gray-dark">далее</span>
+        </button>
+      }
     </div>
   </div>
 </app-test-base>
