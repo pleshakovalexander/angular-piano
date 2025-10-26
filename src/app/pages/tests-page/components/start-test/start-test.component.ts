@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Signature } from 'src/app/models';
 import { getAvailableOctaves, Octave } from 'src/app/utils';
@@ -13,20 +13,20 @@ export class StartTestComponent implements OnInit {
   questionNumbersList: number[] = [];
   octaves: Octave[] = [];
 
-  selectedOctave: FormControl;
-  selectedNumberOfQuestions: FormControl;
+  selectedOctave: UntypedFormControl;
+  selectedNumberOfQuestions: UntypedFormControl;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.octaves = getAvailableOctaves(Signature.sharp);
-    this.selectedOctave = new FormControl(this.octaves[0].code);
+    this.selectedOctave = new UntypedFormControl(this.octaves[0].code);
     let num = 10;
     while (num <= 50) {
       this.questionNumbersList.push(num);
       num += 5;
     }
-    this.selectedNumberOfQuestions = new FormControl(
+    this.selectedNumberOfQuestions = new UntypedFormControl(
       this.questionNumbersList[0]
     );
   }

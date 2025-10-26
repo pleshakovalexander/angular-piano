@@ -5,7 +5,7 @@ import {
   OnDestroy,
   ViewChild
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { fromEvent, interval, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
 import { MonoSynth } from 'tone';
@@ -16,7 +16,7 @@ import { MonoSynth } from 'tone';
   styleUrls: ['./metronome-page.component.css']
 })
 export class MetronomePageComponent implements AfterViewInit, OnDestroy {
-  bpm = new FormControl(120);
+  bpm = new UntypedFormControl(120);
 
   @ViewChild('bpmNumberInput')
   private bpmNumberInput: ElementRef<HTMLInputElement>;

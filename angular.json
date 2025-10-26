@@ -122,7 +122,6 @@
       }
     }
   },
-  "defaultProject": "music-test",
   "cli": {
     "analytics": false
   }
