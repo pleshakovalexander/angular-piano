@@ -8,10 +8,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-test-results',
-  templateUrl: './test-results.component.html',
-  styleUrls: ['./test-results.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-test-results',
+    templateUrl: './test-results.component.html',
+    styleUrls: ['./test-results.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TestResultsComponent implements OnInit {
   @Input() numberOfQuestions: number;

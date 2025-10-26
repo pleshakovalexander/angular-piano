@@ -7,10 +7,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-result-progress',
-  templateUrl: './result-progress.component.html',
-  styleUrls: ['./result-progress.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-result-progress',
+    templateUrl: './result-progress.component.html',
+    styleUrls: ['./result-progress.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ResultProgressComponent implements OnInit {
   @Input() percentage: number;

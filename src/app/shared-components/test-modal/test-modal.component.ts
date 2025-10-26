@@ -4,9 +4,10 @@ import { CloseStatus } from './service/test-modal.model';
 import { TestModalService } from './service/test-modal.service';
 
 @Component({
-  selector: 'app-test-modal',
-  templateUrl: './test-modal.component.html',
-  styleUrls: ['./test-modal.component.css']
+    selector: 'app-test-modal',
+    templateUrl: './test-modal.component.html',
+    styleUrls: ['./test-modal.component.css'],
+    standalone: false
 })
 export class TestModalComponent implements OnInit {
   @ViewChild('myDialog', { static: true })

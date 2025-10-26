@@ -8,9 +8,10 @@ import { CloseStatus } from '../test-modal/service/test-modal.model';
 import { TestModalService } from '../test-modal/service/test-modal.service';
 
 @Component({
-  selector: 'app-test-base',
-  templateUrl: './test-base.component.html',
-  styleUrls: ['./test-base.component.css']
+    selector: 'app-test-base',
+    templateUrl: './test-base.component.html',
+    styleUrls: ['./test-base.component.css'],
+    standalone: false
 })
 export class TestBaseComponent implements OnInit {
   info: CurrentTestInfo;

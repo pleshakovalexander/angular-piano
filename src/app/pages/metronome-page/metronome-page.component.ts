@@ -11,9 +11,10 @@ import { debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
 import { MonoSynth } from 'tone';
 
 @Component({
-  selector: 'app-metronome-page',
-  templateUrl: './metronome-page.component.html',
-  styleUrls: ['./metronome-page.component.css']
+    selector: 'app-metronome-page',
+    templateUrl: './metronome-page.component.html',
+    styleUrls: ['./metronome-page.component.css'],
+    standalone: false
 })
 export class MetronomePageComponent implements AfterViewInit, OnDestroy {
   bpm = new UntypedFormControl(120);

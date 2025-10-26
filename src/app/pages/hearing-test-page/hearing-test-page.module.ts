@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule, inject, provideAppInitializer } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HearingTestPageComponent } from './hearing-test-page.component';
 import { TestBaseModule } from 'src/app/shared-components/test-base/test-base.module';
@@ -11,14 +11,12 @@ import { TestModalModule } from 'src/app/shared-components/test-modal/test-modal
   imports: [CommonModule, TestBaseModule, PianoKeysModule, TestModalModule],
   providers: [
     SamplerService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (sampleService: SamplerService) => {
+    provideAppInitializer(() => {
+        const initializerFn = ((sampleService: SamplerService) => {
         return () => sampleService.init();
-      },
-      deps: [SamplerService],
-      multi: true
-    }
+      })(inject(SamplerService));
+        return initializerFn();
+      })
   ]
 })
 export class HearingTestPageModule {}

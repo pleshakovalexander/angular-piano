@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Output, V
 import { Signature } from 'src/app/models';
 
 @Component({
-  selector: 'app-toggle-button',
-  templateUrl: './toggle-button.component.html',
-  styleUrls: ['./toggle-button.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-toggle-button',
+    templateUrl: './toggle-button.component.html',
+    styleUrls: ['./toggle-button.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ToggleButtonComponent {
   @Output() readonly change = new EventEmitter<Signature>();

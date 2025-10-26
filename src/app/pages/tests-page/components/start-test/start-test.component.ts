@@ -5,9 +5,10 @@ import { Signature } from 'src/app/models';
 import { getAvailableOctaves, Octave } from 'src/app/utils';
 
 @Component({
-  selector: 'app-start-test',
-  templateUrl: './start-test.component.html',
-  styleUrls: ['./start-test.component.css']
+    selector: 'app-start-test',
+    templateUrl: './start-test.component.html',
+    styleUrls: ['./start-test.component.css'],
+    standalone: false
 })
 export class StartTestComponent implements OnInit {
   questionNumbersList: number[] = [];

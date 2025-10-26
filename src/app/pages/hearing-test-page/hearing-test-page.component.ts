@@ -8,9 +8,10 @@ import { Octave } from 'src/app/utils/octave';
 import { Note, NoteMark } from 'src/app/utils/piano';
 
 @Component({
-  selector: 'app-hearing-test-page',
-  templateUrl: './hearing-test-page.component.html',
-  styleUrls: ['./hearing-test-page.component.css']
+    selector: 'app-hearing-test-page',
+    templateUrl: './hearing-test-page.component.html',
+    styleUrls: ['./hearing-test-page.component.css'],
+    standalone: false
 })
 export class HearingTestPageComponent implements OnInit {
   octaveName: string;

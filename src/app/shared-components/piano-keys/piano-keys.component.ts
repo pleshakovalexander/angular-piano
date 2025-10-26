@@ -13,10 +13,11 @@ import {
 } from 'src/app/utils/piano';
 
 @Component({
-  selector: 'app-piano-keys',
-  templateUrl: './piano-keys.component.html',
-  styleUrls: ['./piano-keys.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-piano-keys',
+    templateUrl: './piano-keys.component.html',
+    styleUrls: ['./piano-keys.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PianoKeysComponent {
   private _octaveHelper = new OctaveModelHelper();
