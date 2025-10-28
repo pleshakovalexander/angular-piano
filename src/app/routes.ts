@@ -4,7 +4,7 @@ import { HearingTestPageComponent } from './pages/hearing-test-page/hearing-test
 import { MetronomePageComponent } from './pages/metronome-page/metronome-page.component';
 import { TestsPageComponent } from './pages/tests-page/tests-page.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/tests', pathMatch: 'full' },
   {
     path: 'tests',
@@ -22,9 +22,3 @@ const routes: Routes = [
     data: { title: 'Метроном' }
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}

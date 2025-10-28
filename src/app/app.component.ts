@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
+import { HearingTestPageModule } from './pages/hearing-test-page/hearing-test-page.module';
+import { MetronomePageModule } from './pages/metronome-page/metronome-page.module';
+import { TestsPageModule } from './pages/tests-page/tests-page.module';
+import { CommonModule } from '@angular/common';
+
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    standalone: false
+  imports: [
+    CommonModule,
+    RouterModule,
+    TestsPageModule,
+    HearingTestPageModule,
+    MetronomePageModule
+  ],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   constructor(titleService: Title, router: Router) {
