@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  AfterViewInit,
+  Component,
+  Inject,
+  OnInit,
+  PLATFORM_ID
+} from '@angular/core';
 import { toMidi } from '@tonaljs/midi';
 import { CurrentTestService } from 'src/app/services/current-test.service';
 import { SamplerService } from 'src/app/services/sampler.service';
@@ -8,26 +15,27 @@ import { Octave } from 'src/app/utils/octave';
 import { Note, NoteMark } from 'src/app/utils/piano';
 
 @Component({
-    selector: 'app-hearing-test-page',
-    templateUrl: './hearing-test-page.component.html',
-    styleUrls: ['./hearing-test-page.component.css'],
-    standalone: false
+  selector: 'app-hearing-test-page',
+  templateUrl: './hearing-test-page.component.html',
+  styleUrls: ['./hearing-test-page.component.css'],
+  standalone: false
 })
-export class HearingTestPageComponent implements OnInit {
+export class HearingTestPageComponent implements AfterViewInit {
   octaveName: string;
   octaveHelper: Octave;
   guessingNote: string;
   noteGuessed = false;
   guessedCorrect: boolean;
   markedNotes: Map<number, NoteMark> = new Map();
+  private samplerService: SamplerService;
 
   constructor(
-    private samplerService: SamplerService,
+    @Inject(PLATFORM_ID) private platformId: Object,
     private currentTestService: CurrentTestService,
     private testModalService: TestModalService
   ) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.currentTestService.info$.subscribe({
       next: (i) => {
         if (this.octaveName != i.octaveName) {
@@ -36,11 +44,15 @@ export class HearingTestPageComponent implements OnInit {
         }
       }
     });
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.samplerService = new SamplerService();
+      this.samplerService.init();
+    }
   }
 
   initTest(): void {
     this.octaveHelper = new Octave(this.octaveName);
-    this.samplerService.playSequence(this.octaveHelper.tonicTriad);
     this.guessingNote = this.octaveHelper.randomNote();
   }
 

@@ -1,17 +1,25 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import dialogPolyfill from 'dialog-polyfill';
+import {
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+  AfterViewInit,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { CloseStatus } from './service/test-modal.model';
 import { TestModalService } from './service/test-modal.service';
 
 @Component({
-    selector: 'app-test-modal',
-    templateUrl: './test-modal.component.html',
-    styleUrls: ['./test-modal.component.css'],
-    standalone: false
+  selector: 'app-test-modal',
+  templateUrl: './test-modal.component.html',
+  styleUrls: ['./test-modal.component.css'],
+  standalone: false
 })
-export class TestModalComponent implements OnInit {
+export class TestModalComponent implements AfterViewInit {
   @ViewChild('myDialog', { static: true })
-  private dialogElement: ElementRef;
+  dialogElement: ElementRef<HTMLDialogElement>;
   private nativeDialogElement: HTMLDialogElement;
 
   text: string;
@@ -19,31 +27,37 @@ export class TestModalComponent implements OnInit {
   cancelButtonText: string;
   onClose: (status: CloseStatus) => void;
 
-  constructor(private modalService: TestModalService) {}
+  constructor(
+    private modalService: TestModalService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
-  ngOnInit(): void {
-    dialogPolyfill.registerDialog(this.dialogElement.nativeElement);
+  async ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    const dialogPolyfill = await import('dialog-polyfill');
+
+    dialogPolyfill.default.registerDialog(this.dialogElement.nativeElement);
     this.nativeDialogElement = this.dialogElement.nativeElement;
-    this.modalService.show$.subscribe({
-      next: (info) => {
-        this.text = info.text;
-        this.okButtonText = info.okButtonText;
-        this.cancelButtonText = info.cancelButtonString;
-        this.onClose = info.onClose;
-        this.nativeDialogElement.showModal();
-      }
+
+    this.modalService.show$.subscribe((info) => {
+      this.text = info.text;
+      this.okButtonText = info.okButtonText;
+      this.cancelButtonText = info.cancelButtonString;
+      this.onClose = info.onClose;
+      this.nativeDialogElement.showModal();
     });
   }
 
-  okClicked(): void {
+  okClicked() {
     this.nativeDialogElement.close(CloseStatus.Ok);
   }
 
-  cancelClicked(): void {
+  cancelClicked() {
     this.nativeDialogElement.close(CloseStatus.Cancel);
   }
 
-  handleClose(e: Event): void {
+  handleClose(e: Event) {
     const status = (e.target as HTMLDialogElement).returnValue as CloseStatus;
     this.onClose(status);
   }

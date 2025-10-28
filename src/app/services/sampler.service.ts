@@ -1,13 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Sampler as ToneSampler } from 'tone';
+import { Sampler } from 'tone';
 
-@Injectable()
 export class SamplerService {
-  private sampler: ToneSampler;
+  private sampler: Sampler | null = null;
 
-  init(): Promise<any> {
+  init(): Promise<boolean> {
     return new Promise((resolve) => {
-      const sampler: ToneSampler = new ToneSampler(
+      const sampler: Sampler = new Sampler(
         {
           C1: '/assets/C1.mp3',
           A1: '/assets/A1.mp3',

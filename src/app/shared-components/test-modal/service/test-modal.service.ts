@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { TestModalInfo } from './test-modal.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class TestModalService {
   private _show$ = new Subject<TestModalInfo>();
   public show$ = this._show$.asObservable();
