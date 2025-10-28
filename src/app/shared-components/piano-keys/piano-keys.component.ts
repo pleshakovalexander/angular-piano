@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,11 +14,11 @@ import {
 } from 'src/app/utils/piano';
 
 @Component({
-    selector: 'app-piano-keys',
-    templateUrl: './piano-keys.component.html',
-    styleUrls: ['./piano-keys.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  imports: [CommonModule],
+  selector: 'app-piano-keys',
+  templateUrl: './piano-keys.component.html',
+  styleUrls: ['./piano-keys.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PianoKeysComponent {
   private _octaveHelper = new OctaveModelHelper();

@@ -1,22 +1,22 @@
 <div class="piano">
   @for (octave of octaves; track octave) {
-    <div class="octave-block"
-      >
+    <div class="octave-block">
       <div class="octave-header">
-        <h4 class="octave-name">{{octave.name}}</h4>
+        <h4 class="octave-name">{{ octave.name }}</h4>
       </div>
       <div class="octave">
         @for (note of octave.notes; track note; let i = $index) {
-          <button type="button"
+          <button
+            type="button"
             class="key"
             [ngClass]="note.cssClassObj"
-            [disabled]="!note.degree"
-            (click)="handleKeyPressed(note)">
+            (click)="handleKeyPressed(note)"
+          >
             <span>
               @if (i === 0) {
-                <span>{{note.name}}</span>
+                <span>{{ note.name }}</span>
               }
-              <span>{{note.degree}}</span>
+              <span>{{ note.degree }}</span>
             </span>
           </button>
         }
