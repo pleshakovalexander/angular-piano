@@ -25,11 +25,4 @@ export class SamplerService {
     this.sampler.releaseAll();
     this.sampler.triggerAttack(note);
   }
-  playSequence(notes: string[]): void {
-    notes.forEach((n, i) => {
-      setTimeout(() => {
-        this.play(n);
-      }, i * 650);
-    });
-  }
 }
