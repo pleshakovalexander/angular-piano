@@ -1,6 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { MetronomePageComponent } from './pages/metronome-page/metronome-page.component';
+import { Routes } from '@angular/router';
 import { PianoComponent } from './pages/piano/piano.component';
 
 export const routes: Routes = [
@@ -10,10 +8,6 @@ export const routes: Routes = [
     component: PianoComponent,
     data: { title: 'Piano' }
   },
-  {
-    path: 'metronome',
-    component: MetronomePageComponent,
-    data: { title: 'Метроном' }
-  },
+
   { path: '**', redirectTo: '/piano' }
 ];
