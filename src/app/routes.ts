@@ -6,7 +6,7 @@ export const routes: Routes = [
   {
     path: 'piano',
     component: PianoComponent,
-    data: { title: 'Piano' }
+    title: 'Piano'
   },
 
   { path: '**', redirectTo: '/piano' }
