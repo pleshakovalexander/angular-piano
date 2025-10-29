@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   inject,
@@ -17,7 +18,7 @@ import { Note, NoteMark } from 'src/app/utils/piano';
   styleUrl: './piano.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PianoComponent {
+export class PianoComponent implements AfterViewInit {
   octaveName: string = 'C';
   octaveHelper: Octave;
   private samplerService: SamplerService;
